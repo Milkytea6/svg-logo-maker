@@ -4,6 +4,8 @@ const inquirer = require('inquirer');
 const colors = require('colors');
 const { Square, Circle, Triangle } = require('./lib/shapes');
 
+
+
 // an array of prompt for the logo
 const logoPrompts = [
     {
@@ -48,13 +50,14 @@ inquirer
                 console.log('Invaild Shape');
         }
         console.log(logoClass);
-
         const svgCode = logoClass.render(response);
         if (svgCode) {
-            console.log(svgCode);
+
+
+
             // appends new svg file to the folder
-            fs.writeFile('generated-logo.svg', svgCode, (err) =>
-                err ? console.log(err) : console.log('Successfully created svg file')
+            fs.writeFile('logo.svg', svgCode, (err) =>
+                err ? console.log(err) : console.log('Generated logo.svg')
             );
         }
         else {
@@ -62,6 +65,15 @@ inquirer
         }
     });
 
+// Code to implement a unique name for each svg file
+
+// folder path for the logos
+// const path = require('path');
+// const folderPath = 'generated-logos';
+
+// Allows the svg file to have a semi-unique name and be saved in a folder with other svg files.
+// const fileName = `${response.shapeColor}-${response.shape}-${response.characters}.svg`;
+// const filePath = path.join(folderPath, fileName);
 
 
 
